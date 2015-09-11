@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextFieldDelegate>
 
+@property (strong, nonatomic) IBOutlet UITextField *weightTextField;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *speciesSegmentedController;
+@property (strong, nonatomic) IBOutlet UITextField *doseTextField;
+@property (strong, nonatomic) IBOutlet UILabel *bsaLabel;
+@property (strong, nonatomic) IBOutlet UILabel *doseLabel;
 
+- (IBAction)resetButtonPressed:(id)sender;
+- (IBAction)calculateButtonPressed:(id)sender;
 @end
 
