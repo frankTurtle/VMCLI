@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+@property (strong,nonatomic) NSString *tempInfo;
+
 @end
 
 @implementation ViewController
@@ -36,6 +38,9 @@
     
     self.doseTextField.inputAccessoryView = numberToolbar;
     self.weightTextField.inputAccessoryView = numberToolbar;
+    
+    self.bsaLabel.text = [NSString stringWithFormat:@"m%@", @"\u00b2"];
+    self.doseLabel.text = @"mg";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,16 +48,58 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)resetButtonPressed:(id)sender {
+- (IBAction)segmentedControllerChanged:(id)sender
+{
+    NSLog(@"select: %ld", (long)self.speciesSegmentedController.selectedSegmentIndex);
 }
 
-- (IBAction)calculateButtonPressed:(id)sender {
+- (IBAction)resetButtonPressed:(id)sender
+{
+    self.weightTextField.text = @"";
+    self.doseTextField.text = @"";
+    
+    self.bsaLabel.text = [NSString stringWithFormat:@"m%@", @"\u00b2"];
+    self.doseLabel.text = @"mg";
+}
+
+- (IBAction)calculateButtonPressed:(id)sender
+{
+    if ([self.weightTextField.text length] == 0 || [self.doseTextField.text length] == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Fill in all values"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else
+    {
+        float weight = [self.weightTextField.text floatValue];
+        float exponent = 2./3;
+        
+        if (self.speciesSegmentedController.selectedSegmentIndex == 0)
+        {
+            NSLog(@"%f", exponent);
+            
+            self.bsaLabel.text = [NSString stringWithFormat:@"%.02f m%@", ( (10.1 * powf(weight, exponent)) / 100. ), @"\u00b2"];
+            self.doseLabel.text = [NSString stringWithFormat:@"%0.2f mg", ([self.bsaLabel.text floatValue] * [self.doseTextField.text floatValue])];
+        }
+        else if (self.speciesSegmentedController.selectedSegmentIndex == 1)
+        {
+            self.bsaLabel.text = [NSString stringWithFormat:@"%.02f m%@", ( (10.0 * powf(weight, exponent)) / 100. ), @"\u00b2"];
+            self.doseLabel.text = [NSString stringWithFormat:@"%0.2f mg", ([self.bsaLabel.text floatValue] * [self.doseTextField.text floatValue])];
+        }
+    }
 }
 
 #pragma mark - UITextFieldDelegate Methods
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    
+   if(textField.tag == 0) //.... means its the weight
+       self.tempInfo = self.weightTextField.text;
+    else
+        self.tempInfo = self.doseTextField.text;
 }
 
 -(void)doneWithNumberPad
