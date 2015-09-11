@@ -69,9 +69,6 @@
                                     <segment title="Canine"/>
                                     <segment title="Feline"/>
                                 </segments>
-                                <connections>
-                                    <action selector="segmentedControllerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="v38-YX-fbd"/>
-                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="in kg" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6E5-1h-doA">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
