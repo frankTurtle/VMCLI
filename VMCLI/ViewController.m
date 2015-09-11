@@ -39,18 +39,13 @@
     self.doseTextField.inputAccessoryView = numberToolbar;
     self.weightTextField.inputAccessoryView = numberToolbar;
     
-    self.bsaLabel.text = [NSString stringWithFormat:@"m%@", @"\u00b2"];
-    self.doseLabel.text = @"mg";
+    self.bsaLabel.text = [NSString stringWithFormat:@"0.00 m%@", @"\u00b2"];
+    self.doseLabel.text = @"0.00 mg";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)segmentedControllerChanged:(id)sender
-{
-    NSLog(@"select: %ld", (long)self.speciesSegmentedController.selectedSegmentIndex);
 }
 
 - (IBAction)resetButtonPressed:(id)sender
@@ -82,13 +77,13 @@
         {
             NSLog(@"%f", exponent);
             
-            self.bsaLabel.text = [NSString stringWithFormat:@"%.02f m%@", ( (10.1 * powf(weight, exponent)) / 100. ), @"\u00b2"];
-            self.doseLabel.text = [NSString stringWithFormat:@"%0.2f mg", ([self.bsaLabel.text floatValue] * [self.doseTextField.text floatValue])];
+            self.bsaLabel.text = [NSString stringWithFormat:@"%0.3f m%@", ( (10.1 * powf(weight, exponent)) / 100.0 ), @"\u00b2"];
+            self.doseLabel.text = [NSString stringWithFormat:@"%0.3f mg", ([self.bsaLabel.text floatValue] * [self.doseTextField.text floatValue])];
         }
         else if (self.speciesSegmentedController.selectedSegmentIndex == 1)
         {
-            self.bsaLabel.text = [NSString stringWithFormat:@"%.02f m%@", ( (10.0 * powf(weight, exponent)) / 100. ), @"\u00b2"];
-            self.doseLabel.text = [NSString stringWithFormat:@"%0.2f mg", ([self.bsaLabel.text floatValue] * [self.doseTextField.text floatValue])];
+            self.bsaLabel.text = [NSString stringWithFormat:@"%0.3f m%@", ( (10.0 * powf(weight, exponent)) / 100.0 ), @"\u00b2"];
+            self.doseLabel.text = [NSString stringWithFormat:@"%0.3f mg", ([self.bsaLabel.text floatValue] * [self.doseTextField.text floatValue])];
         }
     }
 }

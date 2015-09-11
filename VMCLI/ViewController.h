@@ -16,7 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *bsaLabel;
 @property (strong, nonatomic) IBOutlet UILabel *doseLabel;
 
-- (IBAction)segmentedControllerChanged:(id)sender;
 - (IBAction)resetButtonPressed:(id)sender;
 - (IBAction)calculateButtonPressed:(id)sender;
 @end
