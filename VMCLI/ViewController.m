@@ -11,10 +11,11 @@
 @interface ViewController ()
 
 @property (strong,nonatomic) NSString *tempInfo;
-
 @end
 
 @implementation ViewController
+
+AVAudioPlayer *avSound;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,6 +47,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)segmentedControllerPressed:(UISegmentedControl *)sender
+{
+    NSString *dogPath = [[NSBundle mainBundle] pathForResource:@"woof"
+                                                        ofType:@"mp3"];
+    NSURL *dogSoundURL = [NSURL fileURLWithPath:dogPath];
+
+    NSString *catPath = [[NSBundle mainBundle] pathForResource:@"meow"
+                                                        ofType:@"mp3"];
+    NSURL *catSoundURL = [NSURL fileURLWithPath:catPath];
+    
+    SystemSoundID audioEffect;
+    
+    if (self.speciesSegmentedController.selectedSegmentIndex == 0)
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef) dogSoundURL, &audioEffect);
+    else
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef) catSoundURL, &audioEffect);
+    
+    AudioServicesPlaySystemSound(audioEffect);
 }
 
 - (IBAction)resetButtonPressed:(id)sender

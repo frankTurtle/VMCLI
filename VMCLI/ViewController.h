@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController : UIViewController <UITextFieldDelegate>
 
@@ -16,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *bsaLabel;
 @property (strong, nonatomic) IBOutlet UILabel *doseLabel;
 
+
+- (IBAction)segmentedControllerPressed:(UISegmentedControl *)sender;
 - (IBAction)resetButtonPressed:(id)sender;
 - (IBAction)calculateButtonPressed:(id)sender;
 @end

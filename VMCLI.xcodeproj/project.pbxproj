@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1018A9991BA3851300C9B07C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1018A9981BA3851300C9B07C /* AVFoundation.framework */; };
+		1018A99C1BA3854800C9B07C /* meow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1018A99A1BA3854800C9B07C /* meow.mp3 */; };
+		1018A99D1BA3854800C9B07C /* woof.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1018A99B1BA3854800C9B07C /* woof.mp3 */; };
 		10203ED61BA35EB5007D6A25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10203ED51BA35EB5007D6A25 /* main.m */; };
 		10203ED91BA35EB5007D6A25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10203ED81BA35EB5007D6A25 /* AppDelegate.m */; };
 		10203EDC1BA35EB5007D6A25 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10203EDB1BA35EB5007D6A25 /* ViewController.m */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1018A9981BA3851300C9B07C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1018A99A1BA3854800C9B07C /* meow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow.mp3; sourceTree = "<group>"; };
+		1018A99B1BA3854800C9B07C /* woof.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woof.mp3; sourceTree = "<group>"; };
 		10203ED11BA35EB5007D6A25 /* VMCLI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VMCLI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10203ED51BA35EB5007D6A25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		10203ED71BA35EB5007D6A25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,15 +39,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1018A9991BA3851300C9B07C /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1018A99E1BA3882E00C9B07C /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				1018A99A1BA3854800C9B07C /* meow.mp3 */,
+				1018A99B1BA3854800C9B07C /* woof.mp3 */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
 		10203EC81BA35EB5007D6A25 = {
 			isa = PBXGroup;
 			children = (
+				1018A9981BA3851300C9B07C /* AVFoundation.framework */,
 				10203ED31BA35EB5007D6A25 /* VMCLI */,
 				10203ED21BA35EB5007D6A25 /* Products */,
 			);
@@ -58,6 +75,7 @@
 		10203ED31BA35EB5007D6A25 /* VMCLI */ = {
 			isa = PBXGroup;
 			children = (
+				1018A99E1BA3882E00C9B07C /* Sound */,
 				10203ED71BA35EB5007D6A25 /* AppDelegate.h */,
 				10203ED81BA35EB5007D6A25 /* AppDelegate.m */,
 				10203EDA1BA35EB5007D6A25 /* ViewController.h */,
@@ -138,7 +156,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				10203EE41BA35EB5007D6A25 /* LaunchScreen.storyboard in Resources */,
+				1018A99D1BA3854800C9B07C /* woof.mp3 in Resources */,
 				10203EE11BA35EB5007D6A25 /* Assets.xcassets in Resources */,
+				1018A99C1BA3854800C9B07C /* meow.mp3 in Resources */,
 				10203EDF1BA35EB5007D6A25 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
